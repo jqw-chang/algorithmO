@@ -1,0 +1,41 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html, 
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* wrapper {
+  
+} */
+
+.main {
+  padding: 1em;
+  border-radius: 5px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  border: 1px solid black; 
+  width: 60%;
+  height: 60%;
+}
+
+#callback {
+  padding: 1em;
+  width: 400px;
+  height: 200px;
+}
+
+#testCase {
+  width: 200px;
+}
