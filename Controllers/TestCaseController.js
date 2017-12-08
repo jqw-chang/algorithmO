@@ -10,19 +10,30 @@ const randomWord = require('random-word-by-length');
 const testCase = {
   checkBody: (req, res, next) => {
     console.log(req.body);
+
     if (req.body.dataType === 'Number') {
       res.locals.testCase = testCase.numberType();
-      console.log(res.locals.testCase);
+      res.locals.callback = req.body.callback;
+
+      console.log('RES.LOCALS: >>>>>>', res.locals);
+      res.render('index');
+      
     }
 
     if (req.body.dataType === 'String') {
       res.locals.testCase = testCase.stringType();
-      console.log(res.locals.testCase);
+      res.locals.callback = req.body.callback;
+
+      console.log('RES.LOCALS: >>>>>>', res.locals);
+      res.render('index');
     }
 
     if (req.body.dataType === 'Array') {
       res.locals.testCase = testCase.sameLengthArr();
-      console.log(res.locals.testCase);
+      res.locals.callback = req.body.callback;
+
+      console.log('RES.LOCALS: >>>>>>', res.locals);
+      res.render('index');
     }
 
     // if (req.body.dataType === 'diffLengthArr') {
@@ -30,7 +41,10 @@ const testCase = {
 
     if (req.body.dataType === 'otherInput') {
       res.locals.testCase = req.body.other_dataType;
-      console.log(res.locals.testCase);
+      res.locals.callback = req.body.callback;
+
+      console.log('RES.LOCALS: >>>>>>', res.locals);
+      res.render('index');
     }
   },
 

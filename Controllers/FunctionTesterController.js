@@ -4,38 +4,41 @@
 // As you send pass into callback, START TIMER -- once done, END TIMER
 // Output an object with k/v pair of inputSize:TIME 
                                // >>>>>> send object to RegressionAnalysis
-const fs = require('fs');
+const { performance } = require('perf_hooks');
 
-function functionTester(req, res, next) {
-  //needed inputs = callback, inputArray
 
-  // eval(req.body.callback)(inputArray)
+function functionTester(/*req, res, next*/ callback, inputArray) {
+  //needed inputs = callback, testCase(arr)
+  // Possible methods to use: 
+  // - eval(strCallback)
+  // - new Function(strCallback)
   
   const obj = {};
   console.log(callback);
   inputArray.forEach((input) => {
-    // let start = (new Date).getTime();
-    // console.time('time');
     let start = performance.now();
     callback(input);
-    // console.timeEnd('time');
     let time = performance.now() - start;
-    obj[input] = time;
+    console.log(time)
+    // obj[input] = time;
   });
 
   return obj;
-
-  function add(num) { // O(1) constant
-    return num + 500;
-  }
-
-  function loop(num) { // linear
-    let doSomething = 0;
-    for (let i = 1; i < num; i++) {
-      doSomething++;
-    }
-  }
-
 };
+
+
+// // test:
+// function add(num) { // O(1) constant
+//   return num + 500;
+// }
+
+// function loop(num) { // linear
+//   let doSomething = 0;
+//   for (let i = 1; i < num; i++) {
+//     doSomething++;
+//   }
+// }
+
+// functionTester(loop, [1, 2, 3, 4, 5, 6]);
 
 module.exports = functionTester;

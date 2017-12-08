@@ -13,15 +13,18 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // app.use(express.static('public'));
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
 
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.sendFile('index.html');
+  // res.render('index');
   // res.sendFile('index.ejs');
 });
 
 app.post('/', testCase.checkBody);
 
-app.listen(5000);
+app.listen(5000, ()=> {
+  console.log('listening to 5000');
+});
